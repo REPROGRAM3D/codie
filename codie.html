@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Bot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .chatbox {
+      border: 1px solid #ddd;
+      padding: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    
+    .user-message, .bot-message {
+      margin-bottom: 10px;
+    }
+    
+    .user-message {
+      text-align: right;
+      color: #007bff;
+    }
+    
+    .bot-message {
+      text-align: left;
+      color: #28a745;
+    }
+    
+    .input-group {
+      display: flex;
+    }
+    
+    .input-group input {
+      flex-grow: 1;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    .input-group button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI Bot</h1>
+    
+    <div class="chatbox" id="chatbox"></div>
+    
+    <div class="input-group">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById('chatbox');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-btn');
+
+    // Function to add a user message to the chatbox
+    function addUserMessage(message) {
+      const userMessage = document.createElement('div');
+      userMessage.className = 'user-message';
+      userMessage.textContent = message;
+      chatbox.appendChild(userMessage);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    // Function to add a bot message to the chatbox
+    function addBotMessage(message) {
+      const botMessage = document.createElement('div');
+      botMessage.className = 'bot-message';
+      botMessage.textContent = message;
+      chatbox.appendChild(botMessage);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    // Function to handle sending user input
+    function handleUserInput() {
+      const message = userInput.value.trim();
+      if (message !== '') {
+        addUserMessage(message);
+        // Send the message to your server or AI bot for processing
+       
